@@ -13,7 +13,7 @@ type SubImager interface {
 }
 
 func main() {
-	input, err := os.Open("screenshot.png")
+	input, err := os.Open("input/screenshot.png")
 	if err != nil {
 		log.Fatalf("opening screenshot: %v", err)
 	}

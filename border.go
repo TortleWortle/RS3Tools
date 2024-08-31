@@ -34,6 +34,12 @@ func req(a, b uint32) bool {
 	return a >= tbMin && a <= tbMax
 }
 
+func colorEquals(a, b color.Color) bool {
+	ar, ag, ab, aa := a.RGBA()
+	br, bg, bb, ba := b.RGBA()
+	
+	return ar == br && ag == bg && ab == bb && aa == ba
+}
 func colorRoughEquals(a, b color.Color) bool {
 	ar, ag, ab, aa := a.RGBA()
 	br, bg, bb, ba := b.RGBA()
@@ -96,7 +102,7 @@ func isCorner(img image.Image, x, y int, clr color.Color) (isCorner bool, width,
 
 	// we found ourself a corner probably
 	// TODO: allow scaling images, this requires a resizing step somewhere down the line
-	if width == 32 && width == height {
+	if width > 20 && width == height {
 		return true, width, height
 	}
 

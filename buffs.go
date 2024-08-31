@@ -68,13 +68,14 @@ func BuffsFromImage(img image.Image) []Buff {
 func detectBuffName(img image.Image, rec image.Rectangle) string {
 	// to compare buff icons: transparency map for origin and only compare points that are opaque
 	// average color with tolerance per pixel?
-	r := image.Rect(0, 0, rec.Dx(), rec.Dy())
-	i := image.NewRGBA(r)
-	for x := 1; x < r.Dx()-1; x++ {
-		for y := 1; y < r.Dy()/2; y++ {
-			i.Set(x, y, img.At(rec.Min.X+x, rec.Min.Y+y))
-		}
-	}
+	//r := image.Rect(0, 0, rec.Dx(), rec.Dy())
+	//i := image.NewRGBA(r)
+	i := img.(SubImager).SubImage(rec)
+	//for x := 1; x < r.Dx()-1; x++ {
+	//	for y := 1; y < r.Dy()/2; y++ {
+	//		i.Set(x, y, img.At(rec.Min.X+x, rec.Min.Y+y))
+	//	}
+	//}
 	saveImage(i, "test.png")
 	return "Lol idk"
 }
