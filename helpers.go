@@ -8,6 +8,10 @@ import (
 	"path"
 )
 
+type SubImager interface {
+	SubImage(r image.Rectangle) image.Image
+}
+
 // grab rectangle from screenshot and save to output
 func cropAndSave(img image.Image, x, y, width, height int, filename string) error {
 	cropSize := image.Rect(0, 0, width, height)

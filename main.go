@@ -2,15 +2,10 @@ package main
 
 import (
 	"fmt"
-	"image"
 	"image/png"
 	"log"
 	"os"
 )
-
-type SubImager interface {
-	SubImage(r image.Rectangle) image.Image
-}
 
 func main() {
 	input, err := os.Open("input/screenshot.png")
